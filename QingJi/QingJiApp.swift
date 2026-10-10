@@ -3,6 +3,7 @@ import Speech
 import AVFoundation
 import PhotosUI
 import UIKit
+import Combine
 
 struct DiaryItem: Codable, Identifiable {
     var id = UUID()
@@ -116,7 +117,7 @@ final class DiaryModel: ObservableObject {
                     }
                 }
             }
-        } catch { status = "无法启动麦克风：\\(error.localizedDescription)" }
+        } catch { status = "无法启动麦克风：\(error.localizedDescription)" }
     }
     private func persistCurrent() {
         guard let id = recordingID, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
@@ -162,7 +163,7 @@ final class DiaryModel: ObservableObject {
         guard let bytes = try? await item.loadTransferable(type: Data.self) else { return }
         let id = recordingID ?? UUID()
         recordingID = id
-        let filename = "\\(id.uuidString).jpg"
+        let filename = "\(id.uuidString).jpg"
         guard let image = UIImage(data: bytes),
               let jpeg = image.jpegData(compressionQuality: 0.85) else { return }
         do {
