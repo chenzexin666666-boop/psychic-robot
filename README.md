@@ -1,12 +1,11 @@
-# 轻记 QingJi
+# 轻记 QingJi（iPhone 测试版）
 
-iPhone 一键无感日记测试版（v0.3）。使用 iOS 26 SpeechAnalyzer 将语音实时转为中文文字，安静一段时间后自动保存；可附加照片，记录附带时间和时区。
+已上传可通过 GitHub Actions 云端 macOS 编译的**精简原型**（不是先前 v0.3 ZIP 的逐文件镜像）。
 
-- 录音只用于本机语音识别，不上传语音，不调用 AI。
-- 日记文字和照片仅保存在 iPhone 本机 `Documents/QingJiData/`，此公开仓库不存放个人日记。
-- 项目尚未通过 Mac/Xcode 和真机验证。
-- 本仓库由云端 macOS 工作流编译**未签名的 IPA**，安装仍需用户自行签名。
+功能：iPhone 打开 App 或通过 `qingji://capture` 进入速记；中文语音实时显示；连续静音约 5 秒自动保存；延迟约 3 秒收起；可从照片库附图。记录包含系统时间戳，本地 `Documents/journal.json` 和照片，不上传到 GitHub，也不接 AI。
 
-云端 Actions: https://github.com/chenzexin666666-boop/psychic-robot/actions
+技术：SwiftUI + Apple Speech（SFSpeechRecognizer）+ XcodeGen。语音是否完全离线取决于设备是否支持本地识别。不保证 iPhone 操作按钮松开后立即结束，按键释放事件并不开放给普通 App。
 
-安装时把 `qingji://capture` 绑定到 iPhone 的“快捷指令 → 打开 URL → 操作按钮”。iOS 不提供普通 App 读取操作按钮松开的事件，现以静音时长为自动结束条件。
+**当前状态：源码与工作流已上传，云端 Xcode 编译和 iPhone 真机安装仍需验证。** 编译成功后 Actions → Build QingJi iOS → Artifacts → `QingJi-unsigned-IPA` 下载，Windows 可用 Sideloadly 自行签名安装。
+
+完整、功能更多的 v0.3 项目源码仍保留在此前对话提供的 ZIP 包里。
