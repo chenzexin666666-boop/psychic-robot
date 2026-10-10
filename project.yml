@@ -1,0 +1,36 @@
+name: QingJi
+options:
+  bundleIdPrefix: com.qingji
+targets:
+  QingJi:
+    type: application
+    platform: iOS
+    deploymentTarget: "26.0"
+    sources:
+      - QingJi
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.qingji.quickcapture
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGNING_ALLOWED: "NO"
+        GENERATE_INFOPLIST_FILE: "YES"
+        INFOPLIST_KEY_CFBundleDisplayName: "轻记"
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "用于本机实时语音转文字"
+        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "用于语音转写"
+        INFOPLIST_KEY_NSCameraUsageDescription: "为日记添加照片"
+        INFOPLIST_KEY_NSPhotoLibraryUsageDescription: "为日记选择照片"
+        INFOPLIST_KEY_UIFileSharingEnabled: "YES"
+        INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace: "YES"
+    info:
+      path: QingJi/Info.plist
+      properties:
+        CFBundleURLTypes:
+          - CFBundleURLName: com.qingji.capture
+            CFBundleURLSchemes: [qingji]
+        NSMicrophoneUsageDescription: "用于本机语音识别"
+        NSSpeechRecognitionUsageDescription: "用于实时转写"
+        NSCameraUsageDescription: "为日记拍照"
+        NSPhotoLibraryUsageDescription: "为日记添加照片"
+        UIFileSharingEnabled: true
+        LSSupportsOpeningDocumentsInPlace: true
